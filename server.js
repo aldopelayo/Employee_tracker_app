@@ -23,12 +23,7 @@ const db = mysql.createConnection(
   );
   ///prompt questions for user
 
-
-  db.connect(asyc,function (){
-    askQuestions();
-  })
-
-
+  prompt=askQuestions()
 
   function askQuestions(){
     inquirer.prompt([
@@ -51,6 +46,7 @@ const db = mysql.createConnection(
         .then ((answer)=>{
           switch (answer.choice) {
             case 'view all departments':
+            viewDepartment()
             break;
             case 'view all roles':
             break;
@@ -63,8 +59,23 @@ const db = mysql.createConnection(
             case 'update to an employee role':
             break;
           }
-        })
-  }
+        }
+      )
+   }
+
+   function viewDepartment(){
+    db.query(`SELECT * FROM department`,(err, viewDepartment)=>{
+      console.log(viewDepartment);
+    });
+  };
+
+
+
+
+
+
+
+
 
 
 
