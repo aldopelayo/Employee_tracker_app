@@ -4,19 +4,20 @@ CREATE DATABASE employee_tracker;
 USE employee_tracker;
 
 CREATE TABLE department (
-  id INT PRIMARY KEY,
+  id INT AUTO_INCREMENT,
+  job_id INT,
   department_name VARCHAR(30) NOT NULL,
-  department_id int
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE job (
-    id INT primary key,
+    id INT AUTO_INCREMENT,
     title VARCHAR(30),
     salary DECIMAL,
     department_id int,
-    FOREIGN KEY (department_id)
-    REFERENCES department(id)
-    ON DELETE SET NULL
+    (department_id) INT,
+   PRIMARY KEY (id)
+   FOREIGN KEY (department_id) REFERENCES department(id)
 );
 
 
@@ -24,15 +25,13 @@ CREATE TABLE job (
 
 
 CREATE TABLE employee (
-    id INT primary key,
+    id INT AUTO_INCREMENT,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     job_id int,
-    FOREIGN KEY (job_id)
-    REFERENCES job(id),
-    manager_id int,
-    FOREIGN KEY (manager_id)
-    REFERENCES job(id)
+    manager_id INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY (manager_id) REFERENCES employee(id)
     ON DELETE SET NULL
 
 

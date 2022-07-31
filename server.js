@@ -21,7 +21,50 @@ const db = mysql.createConnection(
     },
     console.log(`Connected to the employee_tracker database.`)
   );
-  ///prompt
+  ///prompt questions for user
+
+
+  db.connect(asyc,function (){
+    askQuestions();
+  })
+
+
+
+  function askQuestions(){
+    inquirer.prompt([
+      {
+        type: 'list',
+        name:'userChoice',
+        message: 'please choose one of the following choices ',
+       choices: [
+        'view all departments',
+        'view all roles',
+        'view all employees',
+        'add a job',
+        'add a department',
+        'add an employee',
+        'update to an employee role'
+       ],
+      }
+    ]
+  )
+        .then ((answer)=>{
+          switch (answer.choice) {
+            case 'view all departments':
+            break;
+            case 'view all roles':
+            break;
+            case 'view all employees':
+            break;
+            case 'add a department':
+            break;
+            case 'add an employee':
+            break;
+            case 'update to an employee role':
+            break;
+          }
+        })
+  }
 
 
 
