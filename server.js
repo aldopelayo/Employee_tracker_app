@@ -34,13 +34,14 @@ const db = mysql.createConnection(
     inquirer.prompt([
       {
         type: 'list',
-        name:'userChoice',
+        name:'askQuestions',
         message: 'please choose one of the following choices ',
        choices: [
         'view all departments',
-        'view all roles',
+        'view all jobs',
         'view all employees',
         'add a job',
+        'view all of the above',
         'add a department',
         'add an employee',
         'update to an employee role'
@@ -53,9 +54,14 @@ const db = mysql.createConnection(
             case 'view all departments':
             viewDepartment();
             break;
-            case 'view all roles':
+            case 'view all jobs':
+              viewJobs()
             break;
             case 'view all employees':
+              viewEmployees()
+            break;
+            case 'view all of the above':
+              viewAll()
             break;
             case 'add a department':
             break;
@@ -68,24 +74,26 @@ const db = mysql.createConnection(
       }
 
    function viewDepartment(){
-    db.query(`SELECT * FROM department`,(err, viewDepartment)=>{
+    db.query(`SELECT id, name from department ORDER BY id;`,(err, viewDepartment)=>{
       console.log(viewDepartment);
     });
   };
 
+  function viewJobs(){
+    db.query(`SELECT * FROM job JOIN department ON job.department=department.id;`,(err, viewJobs)=>{
+      console.log(viewJobs);
+    });
+  };
 
+  function viewEmployees(){
+    db.query(`SELECT * FROM `,(err, viewEmployees)=>{
+      console.log(viewEmployees);
+    });
+  };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  function viewAll(){
+    db.query(`SELECT * FROM employee RIGHT JOIN employee RIGHT JOIN job RIGHT JOIN department ` ,
+    (err, viewAll)=>{
+      console.log(viewAll);
+    });
+  };
