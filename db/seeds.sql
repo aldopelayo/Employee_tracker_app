@@ -10,8 +10,8 @@ VALUES ("manager",100,1),
         ("Officer",60,3),
         ("clerk",80,4);
 
--- insert into employee (first_name,last_name,job_id,manager_id)
--- VALUES("Aldo","Pelayo","manager",null),
-    -- ("JoJo","Elm","intern",1),
-    -- ("tony","stark","officer",2),
-    -- ("steve","urwin","clerk",3);
+insert into employee (first_name,last_name,job_id,manager_id)
+VALUES("Aldo","Pelayo","manager",null),
+    ("JoJo","Elm","intern",1),
+    ("tony","stark","officer",2),
+    ("steve","urwin","clerk",3);

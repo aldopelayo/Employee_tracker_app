@@ -80,19 +80,19 @@ const db = mysql.createConnection(
   };
 
   function viewJobs(){
-    db.query(`SELECT * FROM job JOIN department ON job.department=department.id;`,(err, viewJobs)=>{
+    db.query(`SELECT job.id AS ID, job.name AS POSITION, job.salary AS SALARY, department.name AS department FROM job JOIN DEPARTMENT ON job.department=department.id;`,(err, viewJobs)=>{
       console.log(viewJobs);
     });
   };
 
   function viewEmployees(){
-    db.query(`SELECT * FROM `,(err, viewEmployees)=>{
+    db.query(`SELECT employee.id AS ID, employee.first_name AS First_Name, employee.last_name AS Last_Name, employee.manager_id AS Manager FROM employee;`,(err, viewEmployees)=>{
       console.log(viewEmployees);
     });
   };
 
   function viewAll(){
-    db.query(`SELECT * FROM employee RIGHT JOIN employee RIGHT JOIN job RIGHT JOIN department ` ,
+    db.query(`SELECT employee.id AS ID, employee.first_name AS First_Name, employee.last_name AS Last_Name, employee.manager_id AS Manager FROM employee;` ,
     (err, viewAll)=>{
       console.log(viewAll);
     });

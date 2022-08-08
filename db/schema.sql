@@ -21,14 +21,14 @@ CREATE TABLE job (
 
 
 
--- 
--- CREATE TABLE employee (
-    -- id INT NOT NULL AUTO_INCREMENT,
-    -- first_name VARCHAR(30),
-    -- last_name VARCHAR(30),
-    -- job_id VARCHAR(30),
-    -- manager_id int,
-    -- FOREIGN KEY(manager_id)
-    -- references job(id),
-    -- PRIMARY KEY(id)
--- );
+
+CREATE TABLE employee (
+    id INT NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
+    job_id VARCHAR(30),
+    manager_id int,
+    FOREIGN KEY(manager_id)
+    references job(id),
+    PRIMARY KEY(id)
+);
